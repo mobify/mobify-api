@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "13f844a7-b6c9-4269-9408-50b96303445d",
+		"_postman_id": "1e4eabea-d1b7-428d-8aa4-3cfd352aac9f",
 		"name": "Mobify API",
 		"description": "Interact with the Mobify API.\n\nRequires the following variables:\n\n* `MOBIFY_API_KEY`: Your Mobify Cloud API Key https://cloud.mobify.com/account/. Set as a Postman Environment variable\n* `PROJECT`: Your Mobify Cloud project slug. Set as a collection variable.\n* `TARGET`: Target slug. Set as a collection variable.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -11,11 +11,30 @@
 			"item": [
 				{
 					"name": "List Targets",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "26af4734-bb31-4a8a-97e1-2d740e3fb301",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Verify 2 targets are returned\", function () {",
+									"    var targets = pm.response.json();",
+									"    pm.expect(targets.count).to.eql(2);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://cloud.mobify.com/api/projects/{{PROJECT}}/target/?",
+							"raw": "https://cloud.mobify.com/api/projects/{{PROJECT}}/target/",
 							"protocol": "https",
 							"host": [
 								"cloud",
@@ -43,6 +62,25 @@
 				},
 				{
 					"name": "Get Target",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "afabb4cb-5bf0-4a39-ab28-06a803425abe",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Verify testing target is returned\", function () {",
+									"    var target = pm.response.json();",
+									"    pm.expect(target.slug).to.eql(\"testing\");",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -68,6 +106,18 @@
 				},
 				{
 					"name": "Create Target",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "777b63cb-17a3-47b5-aaea-74376d5656ad",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -103,6 +153,25 @@
 				},
 				{
 					"name": "Update Target",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ba672f41-468a-47aa-a0c9-f0f41105065c",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Verify testing target is returned\", function () {",
+									"    var target = pm.response.json();",
+									"    pm.expect(target.slug).to.eql(\"testing\");",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -117,7 +186,7 @@
 							"raw": "{\n    \"ssr_proxy_configs\": [\n        {\n            \"host\": \"api.example.com\"\n        }\n    ]\n}"
 						},
 						"url": {
-							"raw": "https://cloud.mobify.com/api/projects/{{ SLUG }}/target/{{ TARGET }}/",
+							"raw": "https://cloud.mobify.com/api/projects/{{PROJECT}}/target/{{TARGET}}/",
 							"protocol": "https",
 							"host": [
 								"cloud",
@@ -127,9 +196,9 @@
 							"path": [
 								"api",
 								"projects",
-								"{{ SLUG }}",
+								"{{PROJECT}}",
 								"target",
-								"{{ TARGET }}",
+								"{{TARGET}}",
 								""
 							]
 						},
@@ -175,19 +244,19 @@
 	],
 	"variable": [
 		{
-			"id": "5efc2967-4965-460f-be78-c00275a1625c",
+			"id": "371f9076-f995-4ad4-bdb1-550f1df2c643",
 			"key": "MOBIFY_API_KEY",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "8229b9b3-bc9b-4100-a3d7-157106ca967d",
+			"id": "be259b2f-7207-4827-9116-13e0b148df16",
 			"key": "PROJECT",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "fd3ab163-772a-4c1e-8e26-dbdb5126eed2",
+			"id": "2be417a2-e1a9-4118-a4fc-6615518ff1ed",
 			"key": "TARGET",
 			"value": "",
 			"type": "string"
