@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "1e4eabea-d1b7-428d-8aa4-3cfd352aac9f",
 		"name": "Mobify API",
-		"description": "Interact with the Mobify API.\n\nRequires the following variables:\n\n* `MOBIFY_API_KEY`: Your Mobify Cloud API Key https://cloud.mobify.com/account/. Set as a Postman Environment variable\n* `PROJECT`: Your Mobify Cloud project slug. Set as a collection variable.\n* `TARGET`: Target slug. Set as a collection variable.",
+		"description": "Interact with the Mobify API. https://docs.mobify.com/progressive-web/latest/guides/mobify-api/\n\nRequires the following variables:\n\n* `MOBIFY_API_KEY`: Your Mobify Cloud API Key https://cloud.mobify.com/account/. Set as a Postman Environment variable\n* `PROJECT`: Your Mobify Cloud project slug. Set as a collection variable.\n* `TARGET`: Target slug. Set as a collection variable.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -19,12 +19,7 @@
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
-									"});",
-									"",
-									"pm.test(\"Verify 2 targets are returned\", function () {",
-									"    var targets = pm.response.json();",
-									"    pm.expect(targets.count).to.eql(2);",
-									"})"
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -71,11 +66,7 @@
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
-									"",
-									"pm.test(\"Verify testing target is returned\", function () {",
-									"    var target = pm.response.json();",
-									"    pm.expect(target.slug).to.eql(\"testing\");",
-									"})"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -162,11 +153,7 @@
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
-									"",
-									"pm.test(\"Verify testing target is returned\", function () {",
-									"    var target = pm.response.json();",
-									"    pm.expect(target.slug).to.eql(\"testing\");",
-									"})"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -244,19 +231,19 @@
 	],
 	"variable": [
 		{
-			"id": "371f9076-f995-4ad4-bdb1-550f1df2c643",
+			"id": "82f14975-faeb-439b-8a6b-894095071203",
 			"key": "MOBIFY_API_KEY",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "be259b2f-7207-4827-9116-13e0b148df16",
+			"id": "4e8c9b7f-680a-4bbc-bac8-4e6e4d776e3a",
 			"key": "PROJECT",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "2be417a2-e1a9-4118-a4fc-6615518ff1ed",
+			"id": "200ca46e-f876-439c-8d29-f4c118da4027",
 			"key": "TARGET",
 			"value": "",
 			"type": "string"
