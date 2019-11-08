@@ -29,7 +29,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://cloud.mobify.com/api/projects/{{PROJECT}}/target/?",
+							"raw": "https://cloud.mobify.com/api/projects/{{PROJECT}}/target/",
 							"protocol": "https",
 							"host": [
 								"cloud",
@@ -268,19 +268,19 @@
 	],
 	"variable": [
 		{
-			"id": "36d1f906-0ad7-4757-a631-dfd131b2591a",
+			"id": "0234573a-1a78-46fc-b77b-bbfeea733336",
 			"key": "MOBIFY_API_KEY",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "a8f67761-1421-44b7-9f4d-aed2a3129962",
+			"id": "d52489ba-8290-4e14-87d5-0eb9d6bfa209",
 			"key": "PROJECT",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "8cd55c44-ef55-4228-98ce-2e8ee7e1746f",
+			"id": "7e9e718e-d0e9-4623-821c-91b6488e0738",
 			"key": "TARGET",
 			"value": "",
 			"type": "string"
