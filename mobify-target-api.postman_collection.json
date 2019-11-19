@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "1e4eabea-d1b7-428d-8aa4-3cfd352aac9f",
+		"_postman_id": "6cda8a3e-1134-48fe-8ff2-e8af99dc04c3",
 		"name": "Mobify API",
 		"description": "Interact with the Mobify API. https://docs.mobify.com/progressive-web/latest/guides/mobify-api/\n\nRequires the following variables:\n\n* `MOBIFY_API_KEY`: Your Mobify Cloud API Key https://cloud.mobify.com/account/. Set as a Postman Environment variable\n* `PROJECT`: Your Mobify Cloud project slug. Set as a collection variable.\n* `TARGET`: Target slug. Set as a collection variable.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -192,8 +192,45 @@
 						"description": "Modify target to set its configured proxies"
 					},
 					"response": []
+				},
+				{
+					"name": "Deploy bundle",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"bundle_id\": \"current\"\n}"
+						},
+						"url": {
+							"raw": "https://cloud.mobify.com/api/projects/{{PROJECT}}/target/{{TARGET}}/deploy/",
+							"protocol": "https",
+							"host": [
+								"cloud",
+								"mobify",
+								"com"
+							],
+							"path": [
+								"api",
+								"projects",
+								"{{PROJECT}}",
+								"target",
+								"{{TARGET}}",
+								"deploy",
+								""
+							]
+						}
+					},
+					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"auth": {
@@ -231,22 +268,23 @@
 	],
 	"variable": [
 		{
-			"id": "82f14975-faeb-439b-8a6b-894095071203",
+			"id": "0234573a-1a78-46fc-b77b-bbfeea733336",
 			"key": "MOBIFY_API_KEY",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "4e8c9b7f-680a-4bbc-bac8-4e6e4d776e3a",
+			"id": "d52489ba-8290-4e14-87d5-0eb9d6bfa209",
 			"key": "PROJECT",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "200ca46e-f876-439c-8d29-f4c118da4027",
+			"id": "7e9e718e-d0e9-4623-821c-91b6488e0738",
 			"key": "TARGET",
 			"value": "",
 			"type": "string"
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }
