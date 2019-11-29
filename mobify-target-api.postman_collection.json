@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "Targets",
+			"name": "Target Management",
 			"item": [
 				{
 					"name": "List Targets",
@@ -51,12 +51,12 @@
 								}
 							]
 						},
-						"description": "Lists Targets {{PROJECT}}."
+						"description": "Lists all targets for the project with slug :project_slug. Targets are an abstraction for places to deploy a bundle.\n\nhttps://docs.mobify.com/api/cloud/#api-Target_Management-ListTargets"
 					},
 					"response": []
 				},
 				{
-					"name": "Get Target",
+					"name": "Read Target",
 					"event": [
 						{
 							"listen": "test",
@@ -194,14 +194,14 @@
 					"response": []
 				},
 				{
-					"name": "Deploy bundle",
+					"name": "Deploy a bundle",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
+								"type": "text",
+								"value": "application/json"
 							}
 						],
 						"body": {
@@ -226,6 +226,71 @@
 								""
 							]
 						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "fd0e06b5-9cff-400a-9a49-6fee2bbf9929",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "66df9084-71e6-41d0-85e5-d1e8003e5e12",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Cache Control",
+			"item": [
+				{
+					"name": "Cache Invalidation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pattern\": \"/path/to/products/*/\",\n    \"items\": [\"product_1\", \"product_2\"],\n    \"namespace\": \"demo\"\n}"
+						},
+						"url": {
+							"raw": "https://cloud.mobify.com/api/projects/{{PROJECT}}/target/{{TARGET}}/invalidation/",
+							"protocol": "https",
+							"host": [
+								"cloud",
+								"mobify",
+								"com"
+							],
+							"path": [
+								"api",
+								"projects",
+								"{{PROJECT}}",
+								"target",
+								"{{TARGET}}",
+								"invalidation",
+								""
+							]
+						},
+						"description": "Invalidate cached objects in both CDN and the Application Cache for target with slug :target_slug for the project with slug :project-slug.\n\n\nhttps://docs.mobify.com/api/cloud/#api-Cache_Control-CacheInvalidation"
 					},
 					"response": []
 				}
@@ -268,19 +333,19 @@
 	],
 	"variable": [
 		{
-			"id": "0234573a-1a78-46fc-b77b-bbfeea733336",
+			"id": "d9893723-19c0-47f6-9528-ea6200dfa54b",
 			"key": "MOBIFY_API_KEY",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "d52489ba-8290-4e14-87d5-0eb9d6bfa209",
+			"id": "e7d50e58-8e53-4a0b-a2df-a417295f9b37",
 			"key": "PROJECT",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "7e9e718e-d0e9-4623-821c-91b6488e0738",
+			"id": "b7de1ee4-2ee4-4e96-9eba-5983b17aa4fc",
 			"key": "TARGET",
 			"value": "",
 			"type": "string"
