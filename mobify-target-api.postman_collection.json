@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "Targets",
+			"name": "Target Management",
 			"item": [
 				{
 					"name": "List Targets",
@@ -51,12 +51,12 @@
 								}
 							]
 						},
-						"description": "Lists Targets {{PROJECT}}."
+						"description": "Lists all targets for the project with slug {{PROJECT}}. Targets are an abstraction for places to deploy a bundle.\n\nhttps://docs.mobify.com/api/cloud/#api-Target_Management-ListTargets"
 					},
 					"response": []
 				},
 				{
-					"name": "Get Target",
+					"name": "Read Target",
 					"event": [
 						{
 							"listen": "test",
@@ -91,7 +91,8 @@
 								"{{TARGET}}",
 								""
 							]
-						}
+						},
+						"description": "Read data about the target with slug {{TARGET}} for the project with the slug {{PROJECT}}.\n\nhttps://docs.mobify.com/api/cloud/#api-Target_Management-ReadTarget"
 					},
 					"response": []
 				},
@@ -138,7 +139,7 @@
 								""
 							]
 						},
-						"description": "Create a new target"
+						"description": "Create a new target for the project with slug {{PROJECT}}.\n\nhttps://docs.mobify.com/api/cloud/#api-Target_Management-CreateTargets"
 					},
 					"response": []
 				},
@@ -189,19 +190,19 @@
 								""
 							]
 						},
-						"description": "Modify target to set its configured proxies"
+						"description": "Update the target with slug {{TARGET}} for the project with the slug {{PROJECT}}. Re-deploy the current bundle if any of the SSR-related properties is changed by the API call.\n\nhttps://docs.mobify.com/api/cloud/#api-Target_Management-UpdateTarget"
 					},
 					"response": []
 				},
 				{
-					"name": "Deploy bundle",
+					"name": "Deploy a bundle",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
+								"type": "text",
+								"value": "application/json"
 							}
 						],
 						"body": {
@@ -225,7 +226,73 @@
 								"deploy",
 								""
 							]
-						}
+						},
+						"description": "Deploy a bundle to an existing target.\n\nhttps://docs.mobify.com/api/cloud/#api-Target_Management-CreateDeploy"
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "fd0e06b5-9cff-400a-9a49-6fee2bbf9929",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "66df9084-71e6-41d0-85e5-d1e8003e5e12",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Cache Control",
+			"item": [
+				{
+					"name": "Cache Invalidation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pattern\": \"/path/to/products/*/\",\n    \"items\": [\"product_1\", \"product_2\"],\n    \"namespace\": \"demo\"\n}"
+						},
+						"url": {
+							"raw": "https://cloud.mobify.com/api/projects/{{PROJECT}}/target/{{TARGET}}/invalidation/",
+							"protocol": "https",
+							"host": [
+								"cloud",
+								"mobify",
+								"com"
+							],
+							"path": [
+								"api",
+								"projects",
+								"{{PROJECT}}",
+								"target",
+								"{{TARGET}}",
+								"invalidation",
+								""
+							]
+						},
+						"description": "Invalidate cached objects in both CDN and the Application Cache for target with slug {{TARGET}} for the project with slug {{PROJECT}}.\n\n\nhttps://docs.mobify.com/api/cloud/#api-Cache_Control-CacheInvalidation"
 					},
 					"response": []
 				}
@@ -268,19 +335,19 @@
 	],
 	"variable": [
 		{
-			"id": "0234573a-1a78-46fc-b77b-bbfeea733336",
+			"id": "d2b697fc-173a-4a49-a62f-25e82d07f525",
 			"key": "MOBIFY_API_KEY",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "d52489ba-8290-4e14-87d5-0eb9d6bfa209",
+			"id": "e14bd002-0ded-4a42-afcf-e50c613c800a",
 			"key": "PROJECT",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "7e9e718e-d0e9-4623-821c-91b6488e0738",
+			"id": "18ac225c-1ba5-4829-8800-8916e9bb4174",
 			"key": "TARGET",
 			"value": "",
 			"type": "string"
