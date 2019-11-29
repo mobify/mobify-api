@@ -51,7 +51,7 @@
 								}
 							]
 						},
-						"description": "Lists all targets for the project with slug :project_slug. Targets are an abstraction for places to deploy a bundle.\n\nhttps://docs.mobify.com/api/cloud/#api-Target_Management-ListTargets"
+						"description": "Lists all targets for the project with slug {{PROJECT}}. Targets are an abstraction for places to deploy a bundle.\n\nhttps://docs.mobify.com/api/cloud/#api-Target_Management-ListTargets"
 					},
 					"response": []
 				},
@@ -91,7 +91,8 @@
 								"{{TARGET}}",
 								""
 							]
-						}
+						},
+						"description": "Read data about the target with slug {{TARGET}} for the project with the slug {{PROJECT}}.\n\nhttps://docs.mobify.com/api/cloud/#api-Target_Management-ReadTarget"
 					},
 					"response": []
 				},
@@ -138,7 +139,7 @@
 								""
 							]
 						},
-						"description": "Create a new target"
+						"description": "Create a new target for the project with slug {{PROJECT}}.\n\nhttps://docs.mobify.com/api/cloud/#api-Target_Management-CreateTargets"
 					},
 					"response": []
 				},
@@ -189,7 +190,7 @@
 								""
 							]
 						},
-						"description": "Modify target to set its configured proxies"
+						"description": "Update the target with slug {{TARGET}} for the project with the slug {{PROJECT}}. Re-deploy the current bundle if any of the SSR-related properties is changed by the API call.\n\nhttps://docs.mobify.com/api/cloud/#api-Target_Management-UpdateTarget"
 					},
 					"response": []
 				},
@@ -225,7 +226,8 @@
 								"deploy",
 								""
 							]
-						}
+						},
+						"description": "Deploy a bundle to an existing target.\n\nhttps://docs.mobify.com/api/cloud/#api-Target_Management-CreateDeploy"
 					},
 					"response": []
 				}
@@ -290,7 +292,7 @@
 								""
 							]
 						},
-						"description": "Invalidate cached objects in both CDN and the Application Cache for target with slug :target_slug for the project with slug :project-slug.\n\n\nhttps://docs.mobify.com/api/cloud/#api-Cache_Control-CacheInvalidation"
+						"description": "Invalidate cached objects in both CDN and the Application Cache for target with slug {{TARGET}} for the project with slug {{PROJECT}}.\n\n\nhttps://docs.mobify.com/api/cloud/#api-Cache_Control-CacheInvalidation"
 					},
 					"response": []
 				}
@@ -333,19 +335,19 @@
 	],
 	"variable": [
 		{
-			"id": "d9893723-19c0-47f6-9528-ea6200dfa54b",
+			"id": "d2b697fc-173a-4a49-a62f-25e82d07f525",
 			"key": "MOBIFY_API_KEY",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "e7d50e58-8e53-4a0b-a2df-a417295f9b37",
+			"id": "e14bd002-0ded-4a42-afcf-e50c613c800a",
 			"key": "PROJECT",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "b7de1ee4-2ee4-4e96-9eba-5983b17aa4fc",
+			"id": "18ac225c-1ba5-4829-8800-8916e9bb4174",
 			"key": "TARGET",
 			"value": "",
 			"type": "string"
